@@ -13,7 +13,7 @@
   },
   "eslint.workingDirectories": [
     {
-      "directory": "./builderbook/",
+      "directory": "./fullstack-bookstore/",
       "changeProcessCWD": true
     },
     {
