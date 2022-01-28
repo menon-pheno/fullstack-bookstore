@@ -2,6 +2,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/styles';
 import App from 'next/app';
 import React from 'react';
+import Head from 'next/head';
 import PropTypes from 'prop-types';
 
 import { theme } from '../lib/theme';
@@ -26,6 +27,9 @@ class MyApp extends App {
 
     return (
       <ThemeProvider theme={theme}>
+        <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        </Head>
         <CssBaseline />
         <Header {...pageProps} />
         <Component {...pageProps} />
