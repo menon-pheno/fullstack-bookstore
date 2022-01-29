@@ -1,12 +1,12 @@
 {
-  "name": "1-end",
+  "name": "1-begin",
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint '**/*.js' '**/*.jsx'"
+    "lint": "eslint '**/*.jsx'"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.4",

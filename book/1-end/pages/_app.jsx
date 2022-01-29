@@ -6,27 +6,24 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 
 import { theme } from '../lib/theme';
-
 import Header from '../components/Header';
 
 const propTypes = {
   Component: PropTypes.elementType.isRequired,
-  pageProps: PropTypes.object.isRequired, // eslint-disable-line
+  pageProps: PropTypes.objectOf(PropTypes.object).isRequired,
 };
 
 class MyApp extends App {
   componentDidMount() {
-    // Remove the server-side injected CSS.
+    // 移除伺服器端注入的 CSS
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles && jssStyles.parentNode) {
-      jssStyles.parentNode.removeChild(jssStyles);
+      jssStyles.parentElement.removeChild(jssStyles);
     }
   }
 
   render() {
     const { Component, pageProps } = this.props;
-
-    // console.log(pageProps);
 
     return (
       <ThemeProvider theme={theme}>

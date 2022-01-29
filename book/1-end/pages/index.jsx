@@ -4,11 +4,11 @@ import Button from '@material-ui/core/Button';
 const Index = () => (
   <div style={{ padding: '10px 45px' }}>
     <Head>
-      <title>Index page</title>{' '}
-      <meta name="description" content="This is a description of the Index page" />
+      <title>首頁</title>
+      <meta name="說明" content="這是首頁的說明資訊" />
     </Head>
-    <p>Content on Index page</p>
-    <Button variant="contained">MUI button</Button>
+    <p>首頁資訊</p>
+    <Button variant="contained">MUI 按鈕</Button>
   </div>
 );
 
