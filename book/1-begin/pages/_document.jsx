@@ -37,7 +37,7 @@ export default class MyDocument extends Document {
             {`
                 a {
                     font-weight: 400;
-                    color: #58age6ff;
+                    color: #58a6ff;
                     text-decoration: none;
                     outline: none;
                 }
