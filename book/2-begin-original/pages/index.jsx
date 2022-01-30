@@ -3,10 +3,10 @@ import Head from 'next/head';
 const Index = () => (
   <div style={{ padding: '10px 45px' }}>
     <Head>
-      <title>首頁</title>
-      <meta name="說明" content="這是首頁的說明資訊" />
+      <title>Index page</title>
+      <meta name="description" content="This is SEO description of Index page" />
     </Head>
-    <p>首頁資訊</p>
+    <p>Content on Index page</p>
   </div>
 );
 

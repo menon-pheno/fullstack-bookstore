@@ -5,7 +5,7 @@ import { ServerStyleSheets } from '@material-ui/styles';
 class MyDocument extends Document {
   render() {
     return (
-      <Html lang="zh-Hant">
+      <Html lang="en">
         <Head>
           <meta charSet="utf-8" />
           <meta name="google" content="notranslate" />
