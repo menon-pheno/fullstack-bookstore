@@ -14,7 +14,6 @@ const mongoSchema = new Schema({
     token_type: String,
     expiry_date: Number,
   },
-  // slug 代表書名
   slug: {
     type: String,
     required: true,
