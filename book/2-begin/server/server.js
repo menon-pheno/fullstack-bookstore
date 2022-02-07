@@ -19,7 +19,6 @@ app.prepare().then(() => {
 
   server.listen(port, (err) => {
     if (err) throw err;
-    // eslint-disable-next-line no-console
     console.log(`> 在 ${ROOT_URL} 上準備好了`);
   });
 });
