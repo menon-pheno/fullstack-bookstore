@@ -11,11 +11,10 @@ const handle = app.getRequestHandler();
 app.prepare().then(() => {
   const server = express();
 
-  /*
   server.get('/', (req, res) => {
-    res.send('太棒了，Express 自動更新');
+    const user = { email: 'default@bookstore.org' };
+    app.render(req, res, '/', { user });
   });
-  */
 
   server.get('*', (req, res) => handle(req, res));
 
