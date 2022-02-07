@@ -12,7 +12,7 @@ app.prepare().then(() => {
   const server = express();
 
   server.get('/', (req, res) => {
-    res.send('我的 express 伺服器');
+    res.send('太棒了，Express 自動更新');
   });
 
   server.get('*', (req, res) => handle(req, res));
