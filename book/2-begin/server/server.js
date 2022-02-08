@@ -2,11 +2,13 @@ const express = require('express');
 const next = require('next');
 const mongoose = require('mongoose');
 
+require('dotenv').config();
+
 const dev = process.env.NODE_ENV !== 'production';
 const MONGO_URL = process.env.MONGO_URL_TEST;
 
 const options = {
-  useNewUrlParse: true,
+  useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
   useUnifiedTopology: true,
