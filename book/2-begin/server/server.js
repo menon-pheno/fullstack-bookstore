@@ -2,6 +2,8 @@ const express = require('express');
 const next = require('next');
 const mongoose = require('mongoose');
 
+const User = require('./models/User');
+
 require('dotenv').config();
 
 const dev = process.env.NODE_ENV !== 'production';
@@ -25,8 +27,10 @@ const handle = app.getRequestHandler();
 app.prepare().then(() => {
   const server = express();
 
-  server.get('/', (req, res) => {
-    const user = { email: 'default@bookstore.org' };
+  server.get('/', async (req, res) => {
+    // 現在不用寫死 user 了
+    // const user = { email: 'default@bookstore.org' };
+    const user = await User.findOne({ slug: 'pheno-author' });
     app.render(req, res, '/', { user });
   });
 
