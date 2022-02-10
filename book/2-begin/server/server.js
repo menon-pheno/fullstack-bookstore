@@ -43,7 +43,7 @@ app.prepare().then(() => {
     cookie: {
       httpOnly: true,
       maxAge: 14 * 24 * 60 * 60 * 1000,
-      domain: 'localhose',
+      domain: 'localhost',
     },
   };
 
