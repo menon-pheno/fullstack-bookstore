@@ -52,6 +52,7 @@ app.prepare().then(() => {
   server.get('/', async (req, res) => {
     // 現在不用寫死 user 了
     // const user = { email: 'default@bookstore.org' };
+    req.session.foo = 'bar';
     const user = await User.findOne({ slug: 'pheno-author' });
     app.render(req, res, '/', { user });
   });
