@@ -1,6 +1,7 @@
 const express = require('express');
 const next = require('next');
 const mongoose = require('mongoose');
+const session = require('express-session');
 
 const User = require('./models/User');
 
@@ -26,6 +27,20 @@ const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
   const server = express();
+
+  const sess = {
+    name: process.env.SESSION_NAME,
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUnitialized: false,
+    cookie: {
+      httpOnly: true,
+      maxAge: 14 * 24 * 60 * 60 * 1000,
+      domain: 'localhose',
+    },
+  };
+
+  server.use(session(sess));
 
   server.get('/', async (req, res) => {
     // 現在不用寫死 user 了
