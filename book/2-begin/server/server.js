@@ -2,6 +2,7 @@ const express = require('express');
 const next = require('next');
 const mongoose = require('mongoose');
 const session = require('express-session');
+const mongoSessionStore = require('connect-mongo');
 
 const User = require('./models/User');
 
@@ -28,9 +29,15 @@ const handle = app.getRequestHandler();
 app.prepare().then(() => {
   const server = express();
 
+  const MongoStore = mongoSessionStore(session);
+
   const sess = {
     name: process.env.SESSION_NAME,
     secret: process.env.SESSION_SECRET,
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection,
+      ttl: 14 * 24 * 60 * 60,
+    }),
     resave: false,
     saveUnitialized: false,
     cookie: {
