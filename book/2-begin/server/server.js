@@ -39,7 +39,7 @@ app.prepare().then(() => {
       ttl: 14 * 24 * 60 * 60,
     }),
     resave: false,
-    saveUnitialized: false,
+    saveUninitialized: false,
     cookie: {
       httpOnly: true,
       maxAge: 14 * 24 * 60 * 60 * 1000,
