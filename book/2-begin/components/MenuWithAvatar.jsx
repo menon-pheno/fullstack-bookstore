@@ -37,7 +37,7 @@ class MenuWithAvatar extends React.Component {
         <Avatar
           aria-controls={anchorEl ? 'simple-menu' : null}
           aria-haspopup="true"
-          onClick={this.handeClick}
+          onClick={this.handleClick}
           onKeyPress={this.handleClick}
           src={src}
           alt={alt}
