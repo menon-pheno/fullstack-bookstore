@@ -27,7 +27,22 @@ const Index = ({ user }) => (
   </div>
 );
 
-Index.getInitialProps = async (ctx) => ({ user: ctx.query.user });
+// Index.getInitialProps = async (ctx) => ({ user: ctx.query.user });
+Index.getInitialProps = async (ctx) => {
+  const isFromServer = typeof window === 'undefined';
+  const user = ctx.query ? ctx.query.user && ctx.query.user.toObject() : null;
+
+  if (isFromServer && user) {
+    console.log('Index server getInitialProps...');
+    console.log('before', typeof user._id, user._id);
+    user._id = user._id.toString();
+    console.log('after', typeof user._id, user._id);
+  }
+
+  return {
+    user: ctx.query.user,
+  };
+};
 
 Index.propTypes = propTypes;
 Index.defaultProps = defaultProps;
