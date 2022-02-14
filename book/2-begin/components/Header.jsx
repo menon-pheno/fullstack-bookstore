@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Toolbar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
+import PropTypes from 'prop-types';
 
 import MenuWithAvatar from './MenuWithAvatar';
 import { styleToolbar } from './SharedStyles';
@@ -17,6 +18,17 @@ const optionsMenu = [
     anchor: true,
   },
 ];
+
+const propTypes = {
+  user: PropTypes.shape({
+    avatarUrl: PropTypes.string,
+    displayName: PropTypes.string,
+  }),
+};
+
+const defaultProps = {
+  user: null,
+};
 
 const Header = ({ user }) => (
   <div>
@@ -50,5 +62,8 @@ const Header = ({ user }) => (
     </Toolbar>
   </div>
 );
+
+Header.propTypes = propTypes;
+Header.defaultProps = defaultProps;
 
 export default Header;
