@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-
 import Head from 'next/head';
 
 const propTypes = {
@@ -16,12 +15,12 @@ const defaultProps = {
 const Index = ({ user }) => (
   <div style={{ padding: '10px 45px' }}>
     <Head>
-      <title>Dashboard</title>
-      <meta name="description" content="This is a description of the Index page" />
+      <title>首頁</title>
+      <meta name="說明" content="這是首頁的說明資訊" />
     </Head>
-    <p>Content on Index page</p>
+    <p>首頁資訊</p>
     <p>
-      Email:&nbsp;
+      Email:
       {user.email}
     </p>
   </div>
