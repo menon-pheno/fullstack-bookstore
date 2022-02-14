@@ -27,13 +27,13 @@ const Header = ({ user }) => (
             <Link href="/">
               <Avatar
                 src="https://storage.googleapis.com/builderbook/logo.svg"
-                alt="Bookstore logo"
+                alt="書店 logo"
                 style={{ margin: '0px auto 0px 20px', cursor: 'pointer' }}
               />
             </Link>
           )}
         </Grid>
-        <Grid item xs={12} style={{ textAlign: 'right' }}>
+        <Grid item sm={1} xs={3} style={{ textAlign: 'right' }}>
           {user ? (
             <div style={{ whiteSpace: ' nowrap' }}>
               {user.avatarUrl ? (
