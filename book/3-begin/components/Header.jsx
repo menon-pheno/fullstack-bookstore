@@ -10,11 +10,11 @@ import { styleToolbar } from './SharedStyles';
 
 const optionsMenu = [
   {
-    text: 'Got question?',
-    href: 'https://github.com/async-labs/builderbook/issues',
+    text: '有問題嗎？',
+    href: 'https://github.com/menon-pheno/fullstack-bookstore/issues',
   },
   {
-    text: 'Log out',
+    text: '登出',
     href: '/logout',
     anchor: true,
   },
@@ -41,7 +41,7 @@ function Header({ user }) {
               <Link href="/">
                 <Avatar
                   src="https://storage.googleapis.com/builderbook/logo.svg"
-                  alt="Builder Book logo"
+                  alt="書店 logo"
                   style={{ margin: '0px auto 0px 20px', cursor: 'pointer' }}
                 />
               </Link>
