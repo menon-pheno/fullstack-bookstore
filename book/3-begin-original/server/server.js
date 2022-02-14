@@ -56,7 +56,7 @@ app.prepare().then(() => {
   // this is test code, it will be removed by the end of Chapter 3
   server.get('/', async (req, res) => {
     req.session.foo = 'bar';
-    const user = await User.findOne({ slug: 'team-builder-book' });
+    const user = await User.findOne({ slug: 'pheno-author' });
     app.render(req, res, '/', { user });
   });
 
