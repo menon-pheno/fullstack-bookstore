@@ -52,7 +52,15 @@ export default function withAuth(
     }
 
     render() {
-      // 3. render
+      const { user } = this.props;
+
+      if (loginRequired && !logoutRequired && !user) {
+        return null;
+      }
+
+      if (logoutRequired && user) {
+        return null;
+      }
 
       return (
         <>
