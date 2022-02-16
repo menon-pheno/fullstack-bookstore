@@ -60,7 +60,7 @@ function Header({ user }) {
               </div>
             ) : (
               <Link href="/login">
-                <a style={{ margin: '0px 20px 0px auto' }}>Log in</a>
+                <a style={{ margin: '0px 20px 0px auto' }}>登入</a>
               </Link>
             )}
           </Grid>
