@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
 
-const globalUser = null;
+let globalUser = null;
 
 export default function withAuth(
   BaseComponent,
@@ -39,7 +39,11 @@ export default function withAuth(
     }
 
     componentDidMount() {
-      const { user } = this.props;
+      const { user, isFromServer } = this.props;
+
+      if (isFromServer) {
+        globalUser = user;
+      }
 
       if (loginRequired && !logoutRequired && !user) {
         Router.push('/login');
