@@ -45,10 +45,12 @@ export default function withAuth(
         globalUser = user;
       }
 
+      /*
       if (loginRequired && !logoutRequired && !user) {
         Router.push('/login');
         return;
       }
+      */
 
       if (logoutRequired && user) {
         Router.push('/');
