@@ -58,6 +58,30 @@ function setupGoogle({ server, ROOT_URL }) {
 
   server.use(passport.initialize());
   server.use(passport.session());
+
+  server.get(
+    '/auth/google',
+    passport.authenticate('google', {
+      // 將 options 傳到 passport.authenticate 內
+    }),
+  );
+
+  server.get(
+    '/oauth2callback',
+    passport.authenticate(
+      'google',
+      {
+        failureRedirect: '/login',
+      },
+      (req, res) => {
+        // 執行到這邊的話代表認證成功，因此將使用者轉導回 Index 頁面('/')
+      },
+    ),
+  );
+
+  server.get('/logout', (req, res) => {
+    // 將 req.user 以及 session 內的 user id 清空，轉導回 Login 頁面('/login')
+  });
 }
 
 module.exports = setupGoogle;
