@@ -1,6 +1,8 @@
 const passport = require('passport');
 const Strategy = require('passport-google-oauth').OAuth2Strategy;
 
+const User = require('./models/User');
+
 function setupGoogle({ server, ROOT_URL }) {
   // passport 所需要使用的 callback 函式
   const verify = async (accessToken, refreshToken, profile, verified) => {
@@ -13,6 +15,20 @@ function setupGoogle({ server, ROOT_URL }) {
 
     if (profile.photos && profile.photos.length > 0) {
       avatarUrl = profile.photos[0].value.replace('sz=50', 'sz=128');
+    }
+
+    try {
+      const user = await User.signInOrSignUp({
+        googleId: profile.id,
+        email,
+        googleToken: { accessToken, refreshToken },
+        displayName: profile.displayName,
+        avatarUrl,
+      });
+      verified(null, user);
+    } catch (err) {
+      verified(err);
+      console.log(err);
     }
   };
 
