@@ -1,11 +1,10 @@
 const express = require('express');
 const next = require('next');
-
 const mongoose = require('mongoose');
-
 const session = require('express-session');
 const mongoSessionStore = require('connect-mongo');
 
+const setupGoogle = require('./google');
 const User = require('./models/User');
 
 require('dotenv').config();
@@ -52,6 +51,8 @@ app.prepare().then(() => {
   };
 
   server.use(session(sess));
+
+  setupGoogle({ server, ROOT_URL });
 
   // this is test code, it will be removed by the end of Chapter 3
   server.get('/', async (req, res) => {
