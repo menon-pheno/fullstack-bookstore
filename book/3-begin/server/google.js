@@ -43,6 +43,11 @@ function setupGoogle({ server, ROOT_URL }) {
       verify,
     ),
   );
+
+  // 將 user.id 存入 session 內
+  passport.serializeUser((user, done) => {
+    done(null, user.id);
+  });
 }
 
 module.exports = setupGoogle;
