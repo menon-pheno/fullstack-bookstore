@@ -76,12 +76,15 @@ function setupGoogle({ server, ROOT_URL }) {
       },
       (req, res) => {
         // 執行到這邊的話代表認證成功，因此將使用者轉導回 Index 頁面('/')
+        res.redirect('/');
       },
     ),
   );
 
   server.get('/logout', (req, res) => {
     // 將 req.user 以及 session 內的 user id 清空，轉導回 Login 頁面('/login')
+    req.logout();
+    res.redirect('/login');
   });
 }
 
