@@ -48,6 +48,16 @@ function setupGoogle({ server, ROOT_URL }) {
   passport.serializeUser((user, done) => {
     done(null, user.id);
   });
+
+  // 將 user 去序列化，檢查 MongoDB 是否存有此 user
+  passport.deserializeUser((id, done) => {
+    User.findById(id, User.publicFields(), (err, user) => {
+      done(err, user);
+    });
+  });
+
+  server.use(passport.initialize());
+  server.use(passport.session());
 }
 
 module.exports = setupGoogle;
