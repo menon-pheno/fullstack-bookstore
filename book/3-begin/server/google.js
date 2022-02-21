@@ -62,7 +62,8 @@ function setupGoogle({ server, ROOT_URL }) {
   server.get(
     '/auth/google',
     passport.authenticate('google', {
-      // 將 options 傳到 passport.authenticate 內
+      scope: ['profile', 'email'],
+      prompt: 'select_account',
     }),
   );
 
