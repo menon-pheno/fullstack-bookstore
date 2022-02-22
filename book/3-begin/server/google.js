@@ -75,7 +75,6 @@ function setupGoogle({ server, ROOT_URL }) {
         failureRedirect: '/login',
       },
       (req, res) => {
-        // 執行到這邊的話代表認證成功，因此將使用者轉導回 Index 頁面('/')
         res.redirect('/');
       },
     ),
