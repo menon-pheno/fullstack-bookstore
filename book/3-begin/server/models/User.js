@@ -61,6 +61,10 @@ class UserClass {
       if (_.isEmpty(modifier)) {
         return user;
       }
+
+      await this.updateOne({ googleId }, { $set: modifier });
+
+      return user;
     }
     // 2. user 不存在，產出 slug 並新增 MongoDB 文件
   }
