@@ -39,6 +39,7 @@ const mongoSchema = new Schema({
 class UserClass {
   static publicField() {
     // 取得 publicField
+    return ['id', 'displayName', 'email', 'avatarUrl', 'slug', 'isAdmin'];
   }
 
   static signInOrSignUp() {
