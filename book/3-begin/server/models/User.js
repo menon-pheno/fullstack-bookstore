@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const _ = require('lodash');
 
 const { Schema } = mongoose;
 
@@ -57,7 +58,9 @@ class UserClass {
         modifier.refresh_token = googleToken.refreshToken;
       }
 
-      
+      if (_.isEmpty(modifier)) {
+        return user;
+      }
     }
     // 2. user 不存在，產出 slug 並新增 MongoDB 文件
   }
