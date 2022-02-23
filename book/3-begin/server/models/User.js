@@ -36,6 +36,8 @@ const mongoSchema = new Schema({
   avatarUrl: String,
 });
 
+mongoSchema.loadClass(UserClass);
+
 const User = mongoose.model('User', mongoSchema);
 
 module.exports = User;
