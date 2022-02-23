@@ -37,7 +37,7 @@ const mongoSchema = new Schema({
 });
 
 class UserClass {
-  static publicField() {
+  static publicFields() {
     // 取得 publicField
     return ['id', 'displayName', 'email', 'avatarUrl', 'slug', 'isAdmin'];
   }
