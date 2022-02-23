@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const _ = require('lodash');
+const generateSlug = require('../../../3-end/server/utils/slugify');
 
 const { Schema } = mongoose;
 
@@ -67,6 +68,21 @@ class UserClass {
       return user;
     }
     // 2. user 不存在，產出 slug 並新增 MongoDB 文件
+    const slug = await generateSlug(this, displayName);
+    const userCount = await this.find().countDocuments();
+
+    const newUser = await this.create({
+      createdAt: new Date(),
+      googleId,
+      email,
+      googleToken,
+      displayName,
+      avatarUrl,
+      slug,
+      isAdmin: userCount === 0,
+    });
+
+    return _.pick(newUser, UserClass.publicFields());
   }
 }
 
