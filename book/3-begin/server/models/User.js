@@ -36,6 +36,16 @@ const mongoSchema = new Schema({
   avatarUrl: String,
 });
 
+class UserClass {
+  static publicField() {
+    // 取得 publicField
+  }
+
+  static signInOrSignUp() {
+    // 取得已存在的 user, 如果不存在, 新增一位
+  }
+}
+
 mongoSchema.loadClass(UserClass);
 
 const User = mongoose.model('User', mongoSchema);
