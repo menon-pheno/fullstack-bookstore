@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const _ = require('lodash');
-const generateSlug = require('../../../3-end/server/utils/slugify');
+const generateSlug = require('../utils/slugify');
 
 const { Schema } = mongoose;
 
