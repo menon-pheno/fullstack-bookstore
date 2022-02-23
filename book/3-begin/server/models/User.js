@@ -42,8 +42,13 @@ class UserClass {
     return ['id', 'displayName', 'email', 'avatarUrl', 'slug', 'isAdmin'];
   }
 
-  static signInOrSignUp() {
-    // 取得已存在的 user, 如果不存在, 新增一位
+  static async signInOrSignUp({ googleId, email, googleToken, displayName, avatarUrl }) {
+    const user = await this.findOne({ googleId }).select(UserClass.publicFields().join(' '));
+
+    if (user) {
+      // 1. user 存在，update token
+    }
+    // 2. user 不存在，產出 slug 並新增 MongoDB 文件
   }
 }
 
