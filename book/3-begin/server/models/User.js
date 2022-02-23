@@ -47,6 +47,17 @@ class UserClass {
 
     if (user) {
       // 1. user 存在，update token
+      const modifier = {};
+
+      if (googleToken.accessToken) {
+        modifier.access_token = googleToken.accessToken;
+      }
+
+      if (googleToken.refreshToken) {
+        modifier.refresh_token = googleToken.refreshToken;
+      }
+
+      
     }
     // 2. user 不存在，產出 slug 並新增 MongoDB 文件
   }
