@@ -5,7 +5,6 @@ const session = require('express-session');
 const mongoSessionStore = require('connect-mongo');
 
 const setupGoogle = require('./google');
-const User = require('./models/User');
 
 require('dotenv').config();
 
@@ -53,14 +52,6 @@ app.prepare().then(() => {
   server.use(session(sess));
 
   setupGoogle({ server, ROOT_URL });
-
-  // this is test code, it will be removed by the end of Chapter 3
-  server.get('/', async (req, res) => {
-    req.session.foo = 'bar';
-    const user = await User.findOne({ slug: 'pheno-author' });
-    req.user = user;
-    app.render(req, res, '/');
-  });
 
   server.get('*', (req, res) => handle(req, res));
 
