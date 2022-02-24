@@ -73,8 +73,6 @@ function setupGoogle({ server, ROOT_URL }) {
       failureRedirect: '/login',
     }),
     (req, res) => {
-      console.log('redirect');
-      console.log(req);
       res.redirect('/');
     },
   );
