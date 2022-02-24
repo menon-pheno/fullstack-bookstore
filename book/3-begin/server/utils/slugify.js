@@ -2,6 +2,16 @@ const _ = require('lodash');
 
 const slugify = (text) => _.kebabCase(text);
 
+async function createUniqueSlug(Model, slug, count) {
+  const user = await Model.findOne({ slug: `${slug}-${count}` }, 'id');
+
+  if (!user) {
+    return `${slug}-${count}`;
+  }
+
+  return createUniqueSlug(Model, slug, count + 1);
+}
+
 async function generateSlug(Model, name, filter = {}) {
   const origSlug = slugify(name);
 
@@ -11,7 +21,7 @@ async function generateSlug(Model, name, filter = {}) {
     return origSlug;
   }
 
-  return null;
+  return createUniqueSlug(Model, origSlug, 1);
 }
 
 module.exports = generateSlug;
