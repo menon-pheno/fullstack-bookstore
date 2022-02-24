@@ -69,15 +69,14 @@ function setupGoogle({ server, ROOT_URL }) {
 
   server.get(
     '/oauth2callback',
-    passport.authenticate(
-      'google',
-      {
-        failureRedirect: '/login',
-      },
-      (req, res) => {
-        res.redirect('/');
-      },
-    ),
+    passport.authenticate('google', {
+      failureRedirect: '/login',
+    }),
+    (req, res) => {
+      console.log('redirect');
+      console.log(req);
+      res.redirect('/');
+    },
   );
 
   server.get('/logout', (req, res) => {
