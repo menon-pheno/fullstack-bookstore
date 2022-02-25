@@ -20,8 +20,8 @@ const Index = ({ user }) => (
     </Head>
     <p>首頁資訊</p>
     <p>
-      Email:
-      {user.email}
+      Email: testing...
+      {/* user.email */}
     </p>
   </div>
 );
