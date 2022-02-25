@@ -1,5 +1,17 @@
 import Head from 'next/head';
 import Button from '@material-ui/core/Button';
+import PropTypes from 'prop-types';
+
+const propTypes = {
+  user: PropTypes.shape({
+    displayName: PropTypes.string,
+    email: PropTypes.string.isRequired,
+  }),
+};
+
+const defaultProps = {
+  user: null,
+};
 
 const Index = () => (
   <div style={{ padding: '10px 45px' }}>
@@ -11,5 +23,8 @@ const Index = () => (
     <Button variant="contained">MUI 按鈕</Button>
   </div>
 );
+
+Index.propTypes = propTypes;
+Index.defaultProps = defaultProps;
 
 export default Index;
