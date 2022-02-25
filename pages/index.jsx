@@ -13,7 +13,7 @@ const defaultProps = {
   user: null,
 };
 
-const Index = () => (
+const Index = ({ user }) => (
   <div style={{ padding: '10px 45px' }}>
     <Head>
       <title>首頁</title>
