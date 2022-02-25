@@ -21,12 +21,12 @@ const Index = ({ user }) => (
     <p>首頁資訊</p>
     <p>
       Email: testing...
-      {/* user.email */}
+      {user.email}
     </p>
   </div>
 );
 
-Index.getInitialProps = async (ctx) => ({ user: ctx.query.user });
+Index.getInitialProps = async (ctx) => ({ user: ctx.req.user });
 
 Index.propTypes = propTypes;
 Index.defaultProps = defaultProps;
