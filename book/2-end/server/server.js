@@ -53,6 +53,7 @@ app.prepare().then(() => {
     // 現在不用寫死 user 了
     // const user = { email: 'default@bookstore.org' };
     req.session.foo = 'bar';
+    // slug 的值請確認是的確存在於 MongoDB 的 user.slug
     const user = await User.findOne({ slug: 'pheno-author' });
     app.render(req, res, '/', { user });
   });
