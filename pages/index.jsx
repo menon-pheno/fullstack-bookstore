@@ -1,22 +1,14 @@
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
+import useSWR from 'swr';
+
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const Index = () => {
-  const [user, setUser] = useState({ email: 'default@bookstore.org' });
-  const [isLoading, setLoading] = useState(false);
+  const { data, error } = useSWR('/api/user', fetcher);
+  const user = data;
 
-  useEffect(() => {
-    setLoading(true);
-    fetch(`api/user`)
-      .then((res) => res.json())
-      .then((data) => {
-        setUser(data);
-        setLoading(false);
-      });
-  }, []);
-
-  if (isLoading) return <p>載入中</p>;
-  if (!user) return <p>沒有只用者資訊</p>;
+  if (error) return <p>載入失敗</p>;
+  if (!data) return <p>載入中</p>;
 
   return (
     <div style={{ padding: '10px 45px' }}>
