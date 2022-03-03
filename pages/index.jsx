@@ -1,22 +1,9 @@
 import Head from 'next/head';
-import Button from '@material-ui/core/Button';
-import PropTypes from 'prop-types';
-import useSWR from 'swr';
+import { useState } from 'react';
 
-import dataFetcher from '../lib/dataFetcher';
+const Index = () => {
+  const [user] = useState({ email: 'default@bookstore.org' });
 
-const propTypes = {
-  user: PropTypes.shape({
-    displayName: PropTypes.string,
-    email: PropTypes.string.isRequired,
-  }),
-};
-
-const defaultProps = {
-  user: null,
-};
-
-const Index = ({ user }) => {
   return (
     <div style={{ padding: '10px 45px' }}>
       <Head>
@@ -24,21 +11,9 @@ const Index = ({ user }) => {
         <meta name="說明" content="這是首頁的說明資訊" />
       </Head>
       <p>首頁資訊</p>
-      <Button variant="contained">MUI 按鈕(Demo 用而已)</Button>
-      <div>user prop(demo 用而已): {user.email || '沒資料'}</div>
+      <p>使用者 email: {user.email}</p>
     </div>
   );
-};
-
-Index.propTypes = propTypes;
-Index.defaultProps = defaultProps;
-
-Index.getInitialProps = async () => {
-  return {
-    user: {
-      email: 'default@bookstore.com',
-    },
-  };
 };
 
 export default Index;
