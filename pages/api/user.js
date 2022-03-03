@@ -1,12 +1,14 @@
-import dbConnect from '../../lib/dbConnector';
-import User from '../../models/User';
+import dbConnect from "../../lib/dbConnector";
+import User from "../../models/User";
 
 export default async function handler(req, res) {
+  console.log("handler");
   await dbConnect();
 
   try {
     // 假設 MongoDB 裡面有一筆 User 文件，其 slug 欄位的值是 'pheno-author'
-    const user = await User.findOne({ slug: 'pheno-author' });
+    console.log("We got here");
+    const user = await User.findOne({ slug: "john-huang" });
     res.status(200).json({ success: true, data: user });
   } catch (error) {
     res.status(400).json({ success: false });

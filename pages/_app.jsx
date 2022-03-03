@@ -10,6 +10,7 @@ import Header from '../components/Header';
 
 const propTypes = {
   Component: PropTypes.elementType.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
   pageProps: PropTypes.objectOf(PropTypes.object).isRequired,
 };
 
