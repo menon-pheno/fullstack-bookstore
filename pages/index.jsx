@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import useSWR from 'swr';
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
+import fetcher from '../lib/dataFetcher';
 
 const Index = () => {
   const { data, error } = useSWR('/api/user', fetcher);
