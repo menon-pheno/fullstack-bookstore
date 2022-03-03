@@ -1,8 +1,22 @@
 import Head from 'next/head';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Index = () => {
-  const [user] = useState({ email: 'default@bookstore.org' });
+  const [user, setUser] = useState({ email: 'default@bookstore.org' });
+  const [isLoading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    fetch(`api/user`)
+      .then((res) => res.json())
+      .then((data) => {
+        setUser(data);
+        setLoading(false);
+      });
+  }, []);
+
+  if (isLoading) return <p>載入中</p>;
+  if (!user) return <p>沒有只用者資訊</p>;
 
   return (
     <div style={{ padding: '10px 45px' }}>
