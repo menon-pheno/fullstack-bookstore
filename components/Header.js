@@ -1,22 +1,21 @@
-import Link from 'next/link';
+import * as React from 'react';
+import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+//import ProTip from '../src/ProTip';
+//import Link from '../src/Link';
+//import Copyright from '../src/Copyright';
 
-import Toolbar from '@material-ui/core/Toolbar';
-import Grid from '@material-ui/core/Grid';
-
-//import { styleToolbar } from './SharedStyles';
-
-const Header = () => (
-  <div>
-    <Toolbar>
-      <Grid container direction="row" justifyContent="space-around" align="center">
-        <Grid item xs={12} style={{ textAlign: 'right' }}>
-          <Link href="/login">
-            <a>登入</a>
-          </Link>
-        </Grid>
-      </Grid>
-    </Toolbar>
-  </div>
-);
-
-export default Header;
+export default function Header() {
+  return (
+    <Container maxWidth="sm">
+      <Box sx={{ my: 4 }}>
+        <Typography variant="h4" component="h1" gutterBottom>
+          Next.js example
+        </Typography>
+        
+        
+      </Box>
+    </Container>
+  );
+}
