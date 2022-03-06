@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid';
 const Header = () => (
   <div>
     <Toolbar>
-      <Grid container direction="row" justify="space-around" align="center">
+      <Grid container direction="row" justifyContent="space-around" align="center">
         <Grid item xs={12} style={{ textAlign: 'right' }}>
           <Link href="/login">
             <a>登入</a>
