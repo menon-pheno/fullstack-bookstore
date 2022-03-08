@@ -16,6 +16,7 @@
     "@emotion/styled": "latest",
     "@mui/icons-material": "latest",
     "@mui/material": "latest",
+    "mongoose": "6.0.11",
     "next": "latest",
     "prop-types": "latest",
     "react": "latest",
