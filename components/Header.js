@@ -6,7 +6,7 @@ import Grid from "@mui/material/Grid";
 
 const Header = () => {
   return (
-    <AppBar position="static">
+    <>
       <Toolbar>
         <Grid container direction="row" justify="space-around" align="center">
           <Grid item xs={12} style={{ textAlign: "right" }}>
@@ -16,7 +16,7 @@ const Header = () => {
           </Grid>
         </Grid>
       </Toolbar>
-    </AppBar>
+    </>
   );
 };
 
