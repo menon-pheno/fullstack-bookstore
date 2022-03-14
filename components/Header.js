@@ -39,7 +39,7 @@ export default function Header() {
               aria-label="login switch"
             />
           }
-          label={auth ? 'Logout' : 'Login'}
+          label={auth ? '登出' : '登入'}
         />
       </FormGroup>
       <AppBar position="static">
@@ -54,7 +54,7 @@ export default function Header() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Photos
+            首頁
           </Typography>
           {auth && (
             <div>
@@ -83,8 +83,8 @@ export default function Header() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleClose}>聯絡我們</MenuItem>
+                <MenuItem onClick={handleClose}>登出</MenuItem>
               </Menu>
             </div>
           )}
