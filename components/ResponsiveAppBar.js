@@ -14,20 +14,8 @@ import MenuItem from "@mui/material/MenuItem";
 import Link from "next/link";
 
 const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
-const options = [
-  {
-    text: "有問題嗎？",
-    href: "https://github.com/menon-pheno/fullstack-bookstore/issues",
-  },
-  {
-    text: "登出",
-    href: "/logout",
-    anchor: true,
-  },
-];
 
-const ResponsiveAppBar = () => {
+const ResponsiveAppBar = ({ options }) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
