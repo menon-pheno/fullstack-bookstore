@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 import dbConnect from "../lib/dbConnect";
 import User from "../models/User";
@@ -6,6 +7,7 @@ import Header from "../components/Header";
 
 // users 這個 props 會是來自 MongoDB 的 bookstore.
 const Home = ({ users }) => {
+  const { data: session } = useSession();
   return (
     <>
       <Head>
@@ -13,12 +15,25 @@ const Home = ({ users }) => {
         <meta name="描述" content="這是關於首頁的描述" />
       </Head>
       <Header />
-      <p>首頁的內容</p>
+      <p>從 MongoDB Atlas 取得資料</p>
       {users.map((user) => (
         <div key={user._id}>
           <p>{user.name}</p>
         </div>
       ))}
+
+      <p>登入測試</p>
+      {session ? (
+        <>
+          以 {session.user.email} 登入 <br />
+          <button onClick={() => signOut()}>登出</button>
+        </>
+      ) : (
+        <>
+          未登入 <br />
+          <button onClick={() => signIn()}>登入</button>
+        </>
+      )}
     </>
   );
 };

@@ -3,6 +3,7 @@ import { CacheProvider } from "@emotion/react";
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import Head from "next/head";
+import { SessionProvider } from "next-auth/react";
 
 import createEmotionCache from "../styling/createEmotionCache";
 import basicTheme from "../styling/themes/basicTheme";
@@ -11,19 +12,24 @@ import basicTheme from "../styling/themes/basicTheme";
 const clientSideEmotionCache = createEmotionCache();
 
 export default function MyApp(props) {
-  const { Component, pageProps, emotionCache = clientSideEmotionCache } = props;
-
+  const {
+    Component,
+    pageProps: { session, ...pageProps },
+    emotionCache = clientSideEmotionCache,
+  } = props;
   return (
-    <CacheProvider value={emotionCache}>
-      <Head>
-        <meta name="viewport" content="initial-scale=1, width=device-width" />
-      </Head>
-      <ThemeProvider theme={basicTheme}>
-        {/* CssBaseline 會提供一個一致的 CSS 基準線 */}
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </CacheProvider>
+    <SessionProvider session={session}>
+      <CacheProvider value={emotionCache}>
+        <Head>
+          <meta name="viewport" content="initial-scale=1, width=device-width" />
+        </Head>
+        <ThemeProvider theme={basicTheme}>
+          {/* CssBaseline 會提供一個一致的 CSS 基準線 */}
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </CacheProvider>
+    </SessionProvider>
   );
 }
 
