@@ -13,9 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import Link from "next/link";
 
-const pages = ["Products", "Pricing", "Blog"];
-
-const ResponsiveAppBar = ({ options }) => {
+const ResponsiveAppBar = ({ options, pages }) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 

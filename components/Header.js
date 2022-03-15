@@ -12,7 +12,9 @@ const Header = () => {
       anchor: true,
     },
   ];
-  return <ResponsiveAppBar options={options} />;
+
+  const navPages = [];
+  return <ResponsiveAppBar options={options} pages={navPages} />;
 };
 
 export default Header;
