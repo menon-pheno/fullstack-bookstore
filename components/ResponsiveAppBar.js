@@ -11,9 +11,21 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
+import Link from "next/link";
 
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const options = [
+  {
+    text: "有問題嗎？",
+    href: "https://github.com/menon-pheno/fullstack-bookstore/issues",
+  },
+  {
+    text: "登出",
+    href: "/logout",
+    anchor: true,
+  },
+];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -125,10 +137,24 @@ const ResponsiveAppBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
+              {options.map((option) => (
+                <div key={option.text}>
+                  {option.anchor ? (
+                    <MenuItem
+                      onClick={(event) => {
+                        event.preventDefault();
+                        window.location.href = option.href;
+                        handleCloseUserMenu();
+                      }}
+                    >
+                      {option.text}
+                    </MenuItem>
+                  ) : (
+                    <Link href={option.href} as={option.as || option.href}>
+                      <MenuItem>{option.text}</MenuItem>
+                    </Link>
+                  )}
+                </div>
               ))}
             </Menu>
           </Box>
