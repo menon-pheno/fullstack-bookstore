@@ -13,7 +13,7 @@ const Header = () => {
     },
   ];
 
-  const navPages = ["a", "b", "c"];
+  const navPages = [];
   return <ResponsiveAppBar options={options} pages={navPages} />;
 };
 
