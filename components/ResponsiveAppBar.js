@@ -13,7 +13,6 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import Link from "next/link";
 import Image from "next/image";
-//
 import { useSession, signIn, signOut } from "next-auth/react";
 
 const ResponsiveAppBar = ({ options, pages }) => {
