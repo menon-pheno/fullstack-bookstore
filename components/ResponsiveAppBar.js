@@ -13,10 +13,14 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import Link from "next/link";
 import Image from "next/image";
+//
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const ResponsiveAppBar = ({ options, pages }) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  //
+  const { data: session } = useSession();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -103,47 +107,62 @@ const ResponsiveAppBar = ({ options, pages }) => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {options.map((option) => (
-                <div key={option.text}>
-                  {option.anchor ? (
-                    <MenuItem
-                      onClick={(event) => {
-                        event.preventDefault();
-                        window.location.href = option.href;
-                        handleCloseUserMenu();
-                      }}
-                    >
-                      {option.text}
-                    </MenuItem>
-                  ) : (
-                    <Link href={option.href} as={option.as || option.href}>
-                      <MenuItem>{option.text}</MenuItem>
-                    </Link>
-                  )}
-                </div>
-              ))}
-            </Menu>
+            {session ? (
+              <>
+                <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar
+                      alt="Remy Sharp"
+                      src="/static/images/avatar/2.jpg"
+                    />
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: "45px" }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  {options.map((option) => (
+                    <div key={option.text}>
+                      {option.anchor ? (
+                        <MenuItem
+                          onClick={(event) => {
+                            event.preventDefault();
+                            window.location.href = option.href;
+                            handleCloseUserMenu();
+                          }}
+                        >
+                          {option.text}
+                        </MenuItem>
+                      ) : (
+                        <Link href={option.href} as={option.as || option.href}>
+                          <MenuItem>{option.text}</MenuItem>
+                        </Link>
+                      )}
+                    </div>
+                  ))}
+                </Menu>
+              </>
+            ) : (
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => signIn()}
+              >
+                登入
+              </Button>
+            )}
           </Box>
         </Toolbar>
       </Container>
