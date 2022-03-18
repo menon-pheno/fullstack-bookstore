@@ -12,6 +12,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import Link from "next/link";
+import Image from "next/image";
 
 const ResponsiveAppBar = ({ options, pages }) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -42,7 +43,7 @@ const ResponsiveAppBar = ({ options, pages }) => {
             component="div"
             sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
           >
-            LOGO
+            <Image src="/appbar-logo.png" alt="logo" width="32" height="32" />
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -87,7 +88,7 @@ const ResponsiveAppBar = ({ options, pages }) => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
           >
-            LOGO
+            <Image src="/appbar-logo.png" alt="logo" width="32" height="32" />
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
