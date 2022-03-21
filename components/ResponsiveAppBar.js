@@ -18,7 +18,6 @@ import { useSession, signIn, signOut } from "next-auth/react";
 const ResponsiveAppBar = ({ options, pages }) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  //
   const { data: session } = useSession();
 
   const handleOpenNavMenu = (event) => {
