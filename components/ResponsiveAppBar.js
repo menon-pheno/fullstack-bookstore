@@ -147,6 +147,38 @@ const ResponsiveAppBar = ({ options, pages }) => {
                       )}
                     </div>
                   ))}
+
+                  {options.map((option) => {
+                    if (option.isLogout) {
+                      return (
+                        <div key={option.text}>
+                          <MenuItem onClick={() => signOut()}>
+                            {option.text}
+                          </MenuItem>
+                        </div>
+                      );
+                    }
+
+                    if (option.isExternal) {
+                      return (
+                        <div key={option.text}>
+                          <MenuItem>
+                            <a
+                              href={option.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              style={{
+                                color: "inherit",
+                                textDecoration: "none",
+                              }}
+                            >
+                              {option.text}
+                            </a>
+                          </MenuItem>
+                        </div>
+                      );
+                    }
+                  })}
                 </Menu>
               </>
             ) : (
