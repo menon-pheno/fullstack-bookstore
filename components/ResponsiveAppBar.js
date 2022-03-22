@@ -107,12 +107,9 @@ const ResponsiveAppBar = ({ options, pages }) => {
           <Box sx={{ flexGrow: 0 }}>
             {session ? (
               <>
-                <Tooltip title="Open settings">
+                <Tooltip title={"開啟選單"}>
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar
-                      alt="Remy Sharp"
-                      src="/static/images/avatar/2.jpg"
-                    />
+                    <Avatar alt={session.user.name} src={session.user.image} />
                   </IconButton>
                 </Tooltip>
                 <Menu
