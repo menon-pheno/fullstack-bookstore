@@ -128,26 +128,6 @@ const ResponsiveAppBar = ({ options, pages }) => {
                   open={Boolean(anchorElUser)}
                   onClose={handleCloseUserMenu}
                 >
-                  {options.map((option) => (
-                    <div key={option.text}>
-                      {option.anchor ? (
-                        <MenuItem
-                          onClick={(event) => {
-                            event.preventDefault();
-                            window.location.href = option.href;
-                            handleCloseUserMenu();
-                          }}
-                        >
-                          {option.text}
-                        </MenuItem>
-                      ) : (
-                        <Link href={option.href} as={option.as || option.href}>
-                          <MenuItem>{option.text}</MenuItem>
-                        </Link>
-                      )}
-                    </div>
-                  ))}
-
                   {options.map((option) => {
                     if (option.isLogout) {
                       return (
@@ -178,6 +158,30 @@ const ResponsiveAppBar = ({ options, pages }) => {
                         </div>
                       );
                     }
+
+                    if (option.anchor) {
+                      return (
+                        <div key={option.text}>
+                          <MenuItem
+                            onClick={(event) => {
+                              event.preventDefault();
+                              window.location.href = option.href;
+                              handleCloseUserMenu();
+                            }}
+                          >
+                            {option.text}
+                          </MenuItem>
+                        </div>
+                      );
+                    }
+
+                    return (
+                      <div key={option.text}>
+                        <Link href={option.href} as={option.as || option.href}>
+                          <MenuItem>{option.text}</MenuItem>
+                        </Link>
+                      </div>
+                    );
                   })}
                 </Menu>
               </>

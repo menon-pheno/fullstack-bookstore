@@ -10,12 +10,7 @@ const Header = () => {
     {
       text: "登出",
       href: "/logout",
-      anchor: true,
-    },
-    {
-      text: "登出2",
       isLogout: true,
-      href: "temp",
     },
   ];
 
