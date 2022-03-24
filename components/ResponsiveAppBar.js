@@ -186,13 +186,15 @@ const ResponsiveAppBar = ({ options, pages }) => {
                 </Menu>
               </>
             ) : (
-              <Button
-                variant="contained"
-                color="secondary"
-                onClick={() => signIn()}
-              >
-                登入
-              </Button>
+              <Link href="/login">
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={() => signIn()}
+                >
+                  登入
+                </Button>
+              </Link>
             )}
           </Box>
         </Toolbar>
