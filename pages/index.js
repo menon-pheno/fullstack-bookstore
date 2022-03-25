@@ -21,19 +21,6 @@ const Home = ({ users }) => {
           <p>{user.name}</p>
         </div>
       ))}
-
-      <p>登入測試</p>
-      {session ? (
-        <>
-          以 {session.user.email} 登入 <br />
-          <button onClick={() => signOut()}>登出</button>
-        </>
-      ) : (
-        <>
-          未登入 <br />
-          <button onClick={() => signIn()}>登入</button>
-        </>
-      )}
     </>
   );
 };
