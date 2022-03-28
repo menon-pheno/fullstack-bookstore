@@ -1,13 +1,11 @@
 import Head from "next/head";
-import { useSession, signIn, signOut } from "next-auth/react";
 
-import dbConnect from "../lib/dbConnect";
+import dbConnect from "../lib/mongoose";
 import User from "../models/User";
 import Header from "../components/Header";
 
 // users 這個 props 會是來自 MongoDB 的 bookstore.
 const Home = ({ users }) => {
-  const { data: session } = useSession();
   return (
     <>
       <Head>
