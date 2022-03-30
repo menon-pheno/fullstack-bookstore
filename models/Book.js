@@ -13,6 +13,11 @@ const BookSchema = new Schema({
     required: true,
     unique: true,
   },
+  githubRepo: {
+    type: String,
+    required: true,
+  },
+  githubLastCommitSha: String,
   createdAt: {
     type: Date,
     required: true,
