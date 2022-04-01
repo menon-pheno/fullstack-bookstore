@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import generateSlug from "../lib/slugify";
 
 const { Schema } = mongoose;
 
@@ -55,12 +56,37 @@ class BookClass {
 
   static async add({ name, price, githubRepo }) {
     // 程式邏輯
+    const slug = await generateSlug(this, name);
+    if (!slug) {
+      throw new Error(`${name} slug 產生失敗`);
+    }
     // 回傳新增的 book 物件
+    return this.create({
+      name,
+      slug,
+      price,
+      githubRepo,
+      createdAt: new Date(),
+    });
   }
 
   static async edit({ id, name, price, githubRepo }) {
     // 程式邏輯
+    const book = await this.findById(id, "slug name");
+
+    if (!book) {
+      throw new Error(`${id} 書本找不到`);
+    }
+
+    const modifier = { price, githubRepo };
+
+    if (name !== book.name) {
+      modifier.name = name;
+      modifier.slug = await generateSlug(this, name);
+    }
+
     // 回傳修改過後的 book 物件
+    return this.updateOne({ _id: id }, { $set: modifier });
   }
 }
 
