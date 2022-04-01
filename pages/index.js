@@ -1,11 +1,21 @@
 import Head from "next/head";
+import useSWR from "swr";
 
-import dbConnect from "../lib/mongoose";
-import User from "../models/User";
+import dataFetcher from "../lib/dataFetcher";
 import Header from "../components/Header";
 
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 // users 這個 props 會是來自 MongoDB 的 bookstore.
-const Home = ({ users }) => {
+const Home = () => {
+  const { data, error } = useSWR("/api/books", dataFetcher);
+  if (error) {
+    return <>失敗</>;
+  }
+  if (!data) {
+    return <>無資料</>;
+  }
+
+  console.log(`data is ${data}`);
   return (
     <>
       <Head>
@@ -13,29 +23,9 @@ const Home = ({ users }) => {
         <meta name="描述" content="這是關於首頁的描述" />
       </Head>
       <Header />
-      <p>從 MongoDB Atlas 取得資料</p>
-      {users.map((user) => (
-        <div key={user._id}>
-          <p>{user.name}</p>
-        </div>
-      ))}
+      <h1>總算跟書店真的有關係了: {data.data.name}</h1>
     </>
   );
 };
-
-// 從 MongoDB 取得 user(s) 資訊
-
-export async function getServerSideProps() {
-  await dbConnect();
-
-  const result = await User.find({});
-  const users = result.map((doc) => {
-    const user = doc.toObject();
-    user._id = user._id.toString();
-    return user;
-  });
-
-  return { props: { users: users } };
-}
 
 export default Home;
