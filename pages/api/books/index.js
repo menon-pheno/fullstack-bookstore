@@ -14,9 +14,7 @@ async function books(req, res) {
           book._id = book._id.toString();
           return book;
         });
-        console.log(books);
-        const book = books[0];
-        res.status(200).json({ success: true, data: book });
+        res.status(200).json({ success: true, books });
       } catch (error) {
         console.log(error);
         res.status(400).json({ success: false });

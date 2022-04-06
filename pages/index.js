@@ -1,21 +1,40 @@
 import Head from "next/head";
 import useSWR from "swr";
+import { Box, CircularProgress } from "@mui/material";
+import Link from "next/link";
 
 import dataFetcher from "../lib/dataFetcher";
 import Header from "../components/Header";
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
-// users 這個 props 會是來自 MongoDB 的 bookstore.
 const Home = () => {
   const { data, error } = useSWR("/api/books", dataFetcher);
   if (error) {
-    return <>失敗</>;
+    return (
+      <>
+        <Head>
+          <title>首頁</title>
+          <meta name="描述" content="有錯誤" />
+        </Head>
+        <Header />
+        <h1>有錯誤</h1>
+      </>
+    );
   }
   if (!data) {
-    return <>無資料</>;
+    return (
+      <>
+        <Head>
+          <title>首頁</title>
+          <meta name="描述" content="載入中" />
+        </Head>
+        <Header />
+        <Box sx={{ display: "flex" }}>
+          <CircularProgress />
+        </Box>
+      </>
+    );
   }
 
-  console.log(`data is ${data}`);
   return (
     <>
       <Head>
@@ -23,7 +42,18 @@ const Home = () => {
         <meta name="描述" content="這是關於首頁的描述" />
       </Head>
       <Header />
-      <h1>總算跟書店真的有關係了: {data.data.name}</h1>
+      <ul>
+        {data.books.map((book) => (
+          <li key={book._id}>
+            <Link
+              as={`/book-detail/${book.slug}`}
+              href={`/book-detail?slug=${book.slug}`}
+            >
+              <a>{book.name}</a>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </>
   );
 };
