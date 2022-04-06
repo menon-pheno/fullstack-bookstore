@@ -25,6 +25,7 @@
     "prop-types": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "react-markdown": "^8.0.2",
     "swr": "^1.2.2"
   },
   "devDependencies": {

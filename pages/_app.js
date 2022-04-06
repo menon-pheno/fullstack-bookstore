@@ -7,6 +7,7 @@ import { SessionProvider } from "next-auth/react";
 
 import createEmotionCache from "../styling/createEmotionCache";
 import basicTheme from "../styling/themes/basicTheme";
+import Header from "../components/Header";
 
 // 瀏覽器端的 cache, 使用者於瀏覽器的整個 session 內會共用
 const clientSideEmotionCache = createEmotionCache();
@@ -45,6 +46,7 @@ export default function MyApp(props) {
         <ThemeProvider theme={basicTheme}>
           {/* CssBaseline 會提供一個一致的 CSS 基準線 */}
           <CssBaseline />
+          <Header />
           <Component {...pageProps} />
         </ThemeProvider>
       </CacheProvider>
