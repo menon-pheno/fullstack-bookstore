@@ -28,10 +28,7 @@ const Home = () => {
       <ul>
         {data.books.map((book) => (
           <li key={book._id}>
-            <Link
-              as={`/book-detail/${book.slug}`}
-              href={`/book-detail?slug=${book.slug}`}
-            >
+            <Link as={`/books/${book.slug}`} href={`/books?slug=${book.slug}`}>
               <a>{book.name}</a>
             </Link>
           </li>
