@@ -31,7 +31,7 @@ const Chapter = () => {
   }
   return (
     <>
-      {data.chapter.title}:{bookSlug} {chapterSlug}
+      {data.chapter.title}:
       <br />
       <>{data.chapter.content}</>
       {/*<ReactMarkdown children={data.chapter.content} />*/}
