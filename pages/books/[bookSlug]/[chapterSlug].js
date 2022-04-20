@@ -33,8 +33,7 @@ const Chapter = () => {
     <>
       {data.chapter.title}:
       <br />
-      <>{data.chapter.content}</>
-      {/*<ReactMarkdown children={data.chapter.content} />*/}
+      <ReactMarkdown children={data.chapter.content} />
     </>
   );
 };
