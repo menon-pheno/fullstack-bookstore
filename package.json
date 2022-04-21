@@ -22,6 +22,7 @@
     "mongoose": "6.0.11",
     "next": "latest",
     "next-auth": "^4.2.1",
+    "octokit": "^1.7.1",
     "prop-types": "latest",
     "react": "latest",
     "react-dom": "latest",
