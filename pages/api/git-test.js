@@ -2,7 +2,7 @@ import { Octokit } from "octokit";
 
 async function gitTest(req, res) {
   const octokit = new Octokit({
-    auth: `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`,
+    auth: process.env.GITHUB_PERSONAL_ACCESS_TOKEN,
   });
 
   const result = await octokit.rest.repos.listForAuthenticatedUser();
