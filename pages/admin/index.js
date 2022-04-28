@@ -5,7 +5,7 @@ import useSWR from "swr";
 import dataFetcher from "../../lib/dataFetcher";
 
 const Admin = () => {
-  const { data, error } = useSWR(`/api/git-test`, dataFetcher);
+  const { data, error } = useSWR(`/api/git/repos`, dataFetcher);
 
   if (error) {
     return (
