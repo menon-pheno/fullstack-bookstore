@@ -7,8 +7,14 @@ async function repos(req, res) {
 
   const result = await octokit.rest.repos.listForAuthenticatedUser();
   const repos = result.data
-    .map((entry) => entry.name)
-    .filter((repo) => repo.startsWith("book"));
+    .map((entry) => {
+      return {
+        id: entry.id,
+        name: entry.name,
+        fullName: entry.full_name,
+      };
+    })
+    .filter((repo) => repo.name.startsWith("book"));
 
   res.status(200).json({ repos });
 }

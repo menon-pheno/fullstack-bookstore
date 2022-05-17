@@ -29,7 +29,7 @@ const Admin = () => {
     <>
       <ul>
         {data.repos.map((repo) => (
-          <li key={repo}>{repo}</li>
+          <li key={repo.name}>{repo.name}</li>
         ))}
       </ul>
       <Link href="/admin/add-book">

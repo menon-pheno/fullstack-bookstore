@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import generateSlug from "../lib/slugify";
 import Book from "./Book";
 
 const { Schema } = mongoose;
@@ -37,7 +38,7 @@ const ChapterSchema = new Schema({
   htmlContent: {
     type: String,
     default: "",
-    required: true,
+    required: false,
   },
   createdAt: {
     type: Date,
@@ -45,7 +46,7 @@ const ChapterSchema = new Schema({
   },
   order: {
     type: Number,
-    required: true,
+    required: false,
   },
   seoTitle: String,
   seoDescription: String,
@@ -69,6 +70,22 @@ class ChapterClass {
     chapterObject.book = book;
 
     return chapterObject;
+  }
+
+  static async add({ bookId, title, content }) {
+    console.log("Chapter Add");
+    console.log(`${bookId}-${title}`);
+    const slug = await generateSlug(this, title);
+    if (!slug) {
+      throw new Error(`${title} slug 產生失敗`);
+    }
+    return this.create({
+      bookId,
+      title,
+      slug,
+      content,
+      createdAt: new Date(),
+    });
   }
 }
 
